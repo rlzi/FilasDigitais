@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Filas Digitais</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">Filas Digitais</p>
+          <h1>Experiência Apple-style para filas inteligentes.</h1>
+          <p class="subtitle">
+            Controle tickets, distribua atendimento por serviço e acompanhe a operação
+            em tempo real com uma interface minimalista.
+          </p>
+        </div>
+        <div class="hero-actions">
+          <button class="primary" id="resetDay">Encerrar dia</button>
+          <button class="ghost" id="exportData">Exportar</button>
+        </div>
+      </header>
+
+      <section class="stats">
+        <div class="stat">
+          <span class="label">Em espera</span>
+          <strong id="waitingCount">0</strong>
+        </div>
+        <div class="stat">
+          <span class="label">Em atendimento</span>
+          <strong id="servingCount">0</strong>
+        </div>
+        <div class="stat">
+          <span class="label">Concluídos</span>
+          <strong id="doneCount">0</strong>
+        </div>
+        <div class="stat">
+          <span class="label">Tempo médio</span>
+          <strong id="avgTime">0m</strong>
+        </div>
+      </section>
+
+      <section class="grid">
+        <article class="card">
+          <h2>Novo ticket</h2>
+          <form id="ticketForm">
+            <label>
+              Nome do cliente
+              <input name="name" placeholder="Ex: Maria Silva" required />
+            </label>
+            <label>
+              Serviço
+              <select name="service" id="serviceSelect"></select>
+            </label>
+            <label>
+              Prioridade
+              <select name="priority">
+                <option value="normal">Normal</option>
+                <option value="preferencial">Preferencial</option>
+              </select>
+            </label>
+            <button type="submit" class="primary">Gerar ticket</button>
+          </form>
+          <div class="ticket-preview" id="ticketPreview">
+            <span>Próximo ticket</span>
+            <strong id="nextTicket">A-001</strong>
+          </div>
+        </article>
+
+        <article class="card">
+          <h2>Atendimento</h2>
+          <div class="serving" id="servingPanel">
+            <div>
+              <p class="label">Agora</p>
+              <strong id="nowServing">—</strong>
+              <p id="servingMeta" class="meta">Sem atendimento em andamento.</p>
+            </div>
+            <div class="serving-actions">
+              <button class="primary" id="callNext">Chamar próximo</button>
+              <button class="ghost" id="markDone">Concluir</button>
+              <button class="ghost" id="markNoShow">Não compareceu</button>
+            </div>
+          </div>
+          <div class="tips">
+            <p>🎧 Integração pronta para notificações via painel e totem.</p>
+          </div>
+        </article>
+      </section>
+
+      <section class="grid">
+        <article class="card">
+          <h2>Serviços</h2>
+          <ul class="list" id="serviceList"></ul>
+          <form id="serviceForm" class="inline-form">
+            <input name="service" placeholder="Adicionar serviço" required />
+            <button class="ghost" type="submit">Adicionar</button>
+          </form>
+        </article>
+
+        <article class="card">
+          <h2>Fila atual</h2>
+          <ul class="queue" id="queueList"></ul>
+        </article>
+      </section>
+
+      <section class="grid">
+        <article class="card">
+          <h2>Histórico</h2>
+          <ul class="history" id="historyList"></ul>
+        </article>
+        <article class="card">
+          <h2>Insights do dia</h2>
+          <div class="insights" id="insightsPanel"></div>
+        </article>
+      </section>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
